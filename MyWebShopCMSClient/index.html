@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <link rel="stylesheet" href="style/vendor/grid.css"/>
+        <link rel="stylesheet" href="style/style.css"/>
+        <link rel="stylesheet" href="style/components/header.component.css"/>
+        <link rel="stylesheet" href="style/components/placeholder.component.css"/>
+        <link rel="stylesheet" href="style/components/form.component.css"/>
+        <link rel="stylesheet" href="style/components/menu.component.css"/>
+        <link rel="stylesheet" href="style/components/product.component.css"/>
+    </head>
+    
+    <body>
+        <div>TODO write content</div>
+        
+        <div id="component--header">
+        
+        <div class="row">
+            <div class="col-xs-4">
+                <div id="component--header-logo">
+                    CMS WEB SHOP
+                </div>
+            </div>
+            
+            <div class="col-xs-8">
+                <div id="component--menu">
+                    
+<!--                    <?php if(src\client\models\UserModel::hasRoleUser()): ?>
+                        <ul>
+                              <li><a href="index.php/profile">Потребителски профил</a></li> 
+                            <li><?php a("profile", "Потребителски профил");?></li>
+                        </ul>                    
+                    <?php endif; ?>
+                    
+                    <?php if(src\client\models\UserModel::hasRoleModerator()): ?>
+
+                        <ul>
+                             comment  <li><a href="index.php/profile">Модераторски профил</a></li> 
+                            <li><?php a("profile", "Модераторски профил");?></li>
+                        </ul>                                        
+                    <?php endif; ?>
+
+                    <?php if(\src\client\models\UserModel::hasRoleAdmin()): ?>
+
+                        <ul>
+                             <li><a href="index.php/create_product">създаване на продукти</a></li> 
+                            <li><?php a("create_product", "Създаване на продукти");?></li>
+                            
+                            <li>|</li>
+                             <li><a href="index.php/create_category">създаване на категории</a></li> 
+                            <li><?php a("create_category", "Създаване на категории");?></li></li>
+                        </ul>                                                       
+                    <?php endif; ?>                    -->
+                    
+                    
+<!--                   <?php if(src\client\models\UserModel::isGuest()): ?>-->
+                        <ul>
+                            <!-- <li><a href="<?php //navigate('home'); ?>">Начало</a></li> -->
+                            <li><a href="#home">Начало</a></li>
+                            <li>|</li>
+                            
+                            <!-- <li><a href="<?php //navigate('signup'); ?>">Регистрация</a></li> -->   
+                            <li><a href="#signup">Регистрация</a></li>
+                            <li>|</li>
+                            
+                            <!-- <li><a href="<?php// navigate('signin'); ?>">Вход</a></li> -->
+                            <li><a href="#signin">Вход</a></li>
+                             <li>|</li>
+                            <li><a href="#teller">Продукти</a></li>
+                        </ul>                    
+<!--                    <?php endif; ?>
+                    
+                    <?php if(src\client\models\UserModel::isAuthenticated()): ?>
+                        <ul>
+                             <li><a href="index.php/home">Начало</a></li> 
+                            <li><?php a("home", "Начало");?></li>
+                            <li>|</li>
+                            
+                             <li><a href="index.php/teller">Продукти</a></li> 
+                            <li><?php a("teller", "Продукти");?></li>                       
+                            <li>|</li>
+                            
+                             <li><a href="index.php/profile">Профил</a></li> 
+                            <li><?php a("profile", "Профил");?></li>
+                            <li>|</li>
+                            
+                             <li><a href="index.php/logout">Изход</a></li> 
+                            <li><?php a("logout", "Изход");?></li>
+                        </ul>                    
+                    <?php endif; ?>                    -->
+                </div>         
+            </div>
+        </div>
+    </div> 
+        
+        <div id="template-placeholder" class="product--collection">
+<!--            <div class="product--element">
+                <div class="w-px-210 display-inline-block">title</div>
+                <div class="w-px-210 display-inline-block">price</div>
+                <div class="w-px-210 display-inline-block">quantity</div>
+                <div class="w-px-210 display-inline-block">
+                    <a href>Добави в количка</a>
+                </div>
+            </div>-->
+        </div>
+
+        <script src='src/vendor/ajax.js'></script>
+        <script src='src/client/home.controller.js'></script>
+        <script src='src/client/teller.controller.js'></script>
+        
+        <script>
+         
+         var rootElement = document.getElementById("template-placeholder");
+         
+            window.onhaschange = function(){
+                var hashCode = window.location.hash;
+                
+                if(hashCode == '#home') return HomeController.run(rootElement);
+                if(hashCode == '#teller') return TellerController.run(rootElement);
+                return PageNotFoundController.run(rootElement);
+                
+            };
+        </script>
+ <!--         
+//            var template = function(element){
+//                return `
+//                    <div class="product--element">
+//                        <div class="w-px-210 display-inline-block">${element.title}</div>
+//                        <div class="w-px-210 display-inline-block">${element.price}</div>
+//                        <div class="w-px-210 display-inline-block">${element.quantity}</div>
+//                        <div class="w-px-210 display-inline-block">
+//                            <a href="">Добави в количка</a>
+//                        </div>
+//                    </div>`;
+//            };
+//            
+//            //send request
+//            Ajax.json('http://127.0.0.1/MyWebShopCMSApi/index.php/teller', function(responseObject){
+//                var templatePlaceholder = document.getElementById("template-placeholder"); 
+//                 
+//                 var templateBilder = [];
+//                // var responseObject = JSON.parse(responseData);
+//                    
+//                    for(var i = 0; i<responseObject.length; i++){
+//                        var responseTemplate = template(responseObject[i]);
+//                        //templatePlaceholder.innerHTML += responseTemplate;  zaema mnogo pamet - zatova s push
+//                          templateBilder.push(responseTemplate);
+//                    }
+//                    
+//                    templatePlaceholder.innerHTML = templateBilder.join('');
+//            });
+           
+//           //Get external data using http. Create variable and new object hmlhttpReq 1-preprear
+//           var ajaxRequest = new XMLHttpRequest();
+//           
+//           //create sabitie, koeto se aktivira pri vsqka zaqvka kym systemata
+//
+//           ajaxRequest.onreadystatechange = function(){
+//               
+//               if(ajaxRequest.readyState == 4){
+//                   
+////                    //readyState -  systoqnieto na zaqvkata ot iprashtaneto i do dostavkata 
+////                    console.log(ajaxRequest.readyState);
+////
+////                    //Status na zaqvkata
+////                    console.log(ajaxRequest.status);
+////
+////                    //Result
+////                    console.log(ajaxRequest.responseText);
+////                    console.log("***");
+////                    
+////                    //JSON e obekta pasre e funkciqta
+////                    var responseObject = JSON.parse(ajaxRequest.responseText);
+////                    console.log(responseObject);
+//                    
+//                    var templatePlaceholder = document.getElementById("template-placeholder");
+//                    var responseObject = JSON.parse(ajaxRequest.responseText);
+//                    
+//                    for(var i = 0; i<responseObject.length; i++){
+//                        var responseTemplate = template(responseObject[i]);
+//                        templatePlaceholder.innerHTML += responseTemplate;
+//                    }
+//               }    
+//           };
+//           
+//           //otvori nova vruzka za obrabotka na dannite
+//           //ajaxRequest.open('GET', 'https://jsonplaceholder.typicode.com/posts');
+//           
+//           ajaxRequest.open('GET', 'http://127.0.0.1/MyWebShopCMSApi/index.php/teller');
+//           ajaxRequest.send();
+    -->       
+          
+     
+    </body>
+</html>
